@@ -49,11 +49,6 @@
 {/if}
 
 <style>
-	form {
-		display: flex;
-		flex-direction: column;
-	}
-
 	label {
 		color: #fff;
 		opacity: 0.8;
