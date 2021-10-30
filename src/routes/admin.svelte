@@ -41,13 +41,11 @@
 		</div>
 	{/await}
 {:else}
-	<form on:submit={login}>
-		<label for="email">Email</label>
-		<input type="text" id="email" bind:value={email} placeholder="Email" />
-		<label for="password">Password</label>
-		<input type="password" id="password" bind:value={password} placeholder="Password" />
-		<button class="submit-btn">Login</button>
-	</form>
+	<label for="email">Email</label>
+	<input type="text" id="email" bind:value={email} placeholder="Email" />
+	<label for="password">Password</label>
+	<input type="password" id="password" bind:value={password} placeholder="Password" />
+	<button class="submit-btn" on:click={login}>Login</button>
 {/if}
 
 <style>
