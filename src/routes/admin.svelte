@@ -5,8 +5,8 @@
 	import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 	import format from 'dateformat';
 
-	let email = 'applejuichi@gmail.com';
-	let password = 'keylimelemon';
+	let email = '';
+	let password = '';
 
 	function login() {
 		signInWithEmailAndPassword(auth, email, password);
