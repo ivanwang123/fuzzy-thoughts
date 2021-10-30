@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { auth, db } from '../firebase';
-	import { collection, getDocs } from 'firebase/firestore';
+	import { collection, DocumentData, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
 	import { isAuthenticated } from '../stores/authStore';
 	import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 	import format from 'dateformat';
@@ -14,6 +14,10 @@
 
 	function logout() {
 		signOut(auth);
+	}
+
+	function sortPosts(posts: QueryDocumentSnapshot<DocumentData>[]) {
+		return posts.sort((a, b) => b.data().createdAt.toDate() - a.data().createdAt.toDate());
 	}
 
 	const snapshotPromise = getDocs(collection(db, 'posts'));
@@ -30,7 +34,7 @@
 		<h1>Posts</h1>
 		<button type="button" class="logout-btn" on:click={logout}>Log out</button>
 		<div class="feed">
-			{#each snapshot.docs as post}
+			{#each sortPosts(snapshot.docs) as post}
 				<div class="post">
 					<p class="date">{format(post.data().createdAt.toDate(), 'ddd, mmm dS (h:MM TT)')}</p>
 					<p class="content">
