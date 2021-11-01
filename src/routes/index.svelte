@@ -46,6 +46,11 @@
 		opacity: 0.8;
 	}
 
+	h1 {
+		color: transparent;
+		text-shadow: 0 0 3px rgb(255 255 255 / 50%);
+	}
+
 	textarea {
 		background: #3939395b;
 		color: #fff;
@@ -62,5 +67,11 @@
 
 	textarea:focus {
 		outline: none;
+	}
+
+	@media only screen and (max-width: 400px) {
+		textarea {
+			width: 70%;
+		}
 	}
 </style>
